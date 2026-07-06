@@ -166,34 +166,9 @@ AI-Assisted Coding →  You are the pilot, AI is your skilled co-pilot`}</pre>
         </div>
       </div>
 
-      {/* 1.8 Prerequisites */}
+      {/* 1.7 Role Transformation */}
       <div className="flex flex-col gap-3">
-        <h2 className="text-xl font-semibold text-white">1.7 Prerequisites</h2>
-        <div className="flex flex-col gap-2">
-          {[
-            { prereq: "Python", reason: "Used as the backend programming language" },
-            { prereq: "Flask", reason: "Python web framework for the backend" },
-            { prereq: "HTML & CSS (Basics)", reason: "Used for the frontend (user interface)" },
-            { prereq: "Git & GitHub", reason: "Used throughout for version control" },
-          ].map(({ prereq, reason }) => (
-            <div key={prereq} className="flex items-center gap-4 bg-white/5 rounded-lg px-4 py-2.5 border border-white/10">
-              <code className="text-sm text-[#cc785c] font-mono w-40 shrink-0">{prereq}</code>
-              <p className="text-sm text-gray-400">{reason}</p>
-            </div>
-          ))}
-        </div>
-        <div className="bg-yellow-950/40 border border-yellow-500/30 rounded-xl p-4">
-          <p className="text-xs font-semibold text-yellow-400 uppercase tracking-widest mb-1">Important</p>
-          <p className="text-sm text-gray-300 leading-relaxed">
-            If you don&apos;t have experience with Git and GitHub, you will face significant difficulties.
-            The instructor strongly recommends completing a crash course on these topics before starting.
-          </p>
-        </div>
-      </div>
-
-      {/* 1.9 Role Transformation */}
-      <div className="flex flex-col gap-3">
-        <h2 className="text-xl font-semibold text-white">1.8 The Developer&apos;s Role Transformation</h2>
+        <h2 className="text-xl font-semibold text-white">1.7 The Developer&apos;s Role Transformation</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="bg-red-950/30 border border-red-500/20 rounded-xl p-4">
             <p className="text-xs font-semibold text-red-400 uppercase tracking-widest mb-3">Before Claude Code</p>
@@ -218,9 +193,9 @@ AI-Assisted Coding →  You are the pilot, AI is your skilled co-pilot`}</pre>
         </p>
       </div>
 
-      {/* 1.10 Key Takeaways */}
+      {/* 1.8 Key Takeaways */}
       <div className="flex flex-col gap-3">
-        <h2 className="text-xl font-semibold text-white">1.9 Key Takeaways</h2>
+        <h2 className="text-xl font-semibold text-white">1.8 Key Takeaways</h2>
         <ol className="flex flex-col gap-2">
           {[
             "Claude Code is an agentic AI coding tool from Anthropic — currently the most powerful AI coding tool available.",

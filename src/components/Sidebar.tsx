@@ -3,23 +3,29 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  SiAnthropic, SiOllama,
+  SiAnthropic, SiOllama, SiLangchain, SiN8N,
   SiJavascript, SiPython, SiHtml5, SiCss,
   SiTypescript, SiReact, SiNextdotjs, SiNodedotjs,
   SiGit, SiMysql, SiDocker, SiRust, SiPhp, SiDart,
 } from "react-icons/si";
-import { TbNetwork, TbSparkles } from "react-icons/tb";
+import { TbNetwork, TbSparkles, TbDatabaseSearch } from "react-icons/tb";
 import { claudeCodeLessons, getLessonHref } from "@/data/claude-code-lessons";
 import { javascriptLessons, getJsLessonHref } from "@/data/javascript-lessons";
 import { mcpLessons, getMcpLessonHref } from "@/data/mcp-lessons";
 import { promptEngineeringLessons, getPromptEngineeringLessonHref } from "@/data/prompt-engineering-lessons";
 import { ollamaLessons, getOllamaLessonHref } from "@/data/ollama-lessons";
+import { langchainLessons, getLangChainLessonHref } from "@/data/langchain-lessons";
+import { n8nLessons, getN8nLessonHref } from "@/data/n8n-lessons";
+import { ragLessons, getRagLessonHref } from "@/data/rag-lessons";
 
 const topics = [
   { name: "Claude Code", slug: "claude-code/class-1", icon: SiAnthropic,  color: "#cc785c" },
   { name: "MCP",         slug: "mcp/class-1", icon: TbNetwork,    color: "#6366f1" },
   { name: "Prompt Engineering", slug: "prompt-engineering/class-1", icon: TbSparkles, color: "#ec4899" },
   { name: "Ollama",      slug: "ollama/class-1", icon: SiOllama,  color: "#14b8a6" },
+  { name: "LangChain",   slug: "langchain/class-1", icon: SiLangchain, color: "#22a06b" },
+  { name: "n8n",         slug: "n8n/class-1", icon: SiN8N, color: "#ea4b71" },
+  { name: "RAG",         slug: "rag/class-1", icon: TbDatabaseSearch, color: "#8b5cf6" },
   { name: "JavaScript",  slug: "javascript",  icon: SiJavascript, color: "#f7df1e" },
   { name: "Python",      slug: "python",      icon: SiPython,     color: "#3776ab" },
   { name: "HTML",        slug: "html",        icon: SiHtml5,      color: "#e34c26" },
@@ -42,6 +48,9 @@ export default function Sidebar() {
   const onMCP = pathname.startsWith("/blog/mcp");
   const onPromptEngineering = pathname.startsWith("/blog/prompt-engineering");
   const onOllama = pathname.startsWith("/blog/ollama");
+  const onLangChain = pathname.startsWith("/blog/langchain");
+  const onN8n = pathname.startsWith("/blog/n8n");
+  const onRag = pathname.startsWith("/blog/rag");
   const onJavaScript = pathname.startsWith("/blog/javascript");
 
   return (
@@ -61,6 +70,9 @@ export default function Sidebar() {
           const isMCP = slug.startsWith("mcp");
           const isPromptEngineering = slug.startsWith("prompt-engineering");
           const isOllama = slug.startsWith("ollama");
+          const isLangChain = slug.startsWith("langchain");
+          const isN8n = slug.startsWith("n8n");
+          const isRag = slug.startsWith("rag");
           const isJavaScript = slug === "javascript";
 
           return (
@@ -168,6 +180,84 @@ export default function Sidebar() {
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#14b8a6] font-semibold bg-[#14b8a6]/10"
+                            : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
+                        }`}
+                      >
+                        {lesson.label}
+                        <span className="block text-[10px] font-normal leading-tight truncate opacity-70">
+                          {lesson.title.replace(/^Class \d+:\s*/, "")}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Lesson sub-nav — LangChain */}
+              {isLangChain && onLangChain && (
+                <div className="ml-3 mt-0.5 mb-1 flex flex-col gap-0.5 border-l border-white/10 pl-3">
+                  {langchainLessons.map((lesson) => {
+                    const lessonHref = getLangChainLessonHref(lesson.slug);
+                    const isCurrentLesson = pathname === lessonHref || pathname.startsWith(lessonHref + "/");
+                    return (
+                      <Link
+                        key={lesson.slug}
+                        href={lessonHref}
+                        className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
+                          isCurrentLesson
+                            ? "text-[#22a06b] font-semibold bg-[#22a06b]/10"
+                            : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
+                        }`}
+                      >
+                        {lesson.label}
+                        <span className="block text-[10px] font-normal leading-tight truncate opacity-70">
+                          {lesson.title.replace(/^Class \d+:\s*/, "")}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Lesson sub-nav — n8n */}
+              {isN8n && onN8n && (
+                <div className="ml-3 mt-0.5 mb-1 flex flex-col gap-0.5 border-l border-white/10 pl-3">
+                  {n8nLessons.map((lesson) => {
+                    const lessonHref = getN8nLessonHref(lesson.slug);
+                    const isCurrentLesson = pathname === lessonHref || pathname.startsWith(lessonHref + "/");
+                    return (
+                      <Link
+                        key={lesson.slug}
+                        href={lessonHref}
+                        className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
+                          isCurrentLesson
+                            ? "text-[#ea4b71] font-semibold bg-[#ea4b71]/10"
+                            : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
+                        }`}
+                      >
+                        {lesson.label}
+                        <span className="block text-[10px] font-normal leading-tight truncate opacity-70">
+                          {lesson.title.replace(/^Class \d+:\s*/, "")}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Lesson sub-nav — RAG */}
+              {isRag && onRag && (
+                <div className="ml-3 mt-0.5 mb-1 flex flex-col gap-0.5 border-l border-white/10 pl-3">
+                  {ragLessons.map((lesson) => {
+                    const lessonHref = getRagLessonHref(lesson.slug);
+                    const isCurrentLesson = pathname === lessonHref || pathname.startsWith(lessonHref + "/");
+                    return (
+                      <Link
+                        key={lesson.slug}
+                        href={lessonHref}
+                        className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
+                          isCurrentLesson
+                            ? "text-[#8b5cf6] font-semibold bg-[#8b5cf6]/10"
                             : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
                         }`}
                       >

@@ -107,6 +107,74 @@ npm start
 | class-7 | Spec-Driven Development | Done |
 | class-8 | Plan Mode in Claude Code | Done |
 
+### Prompt Engineering Course
+
+| Class | Title | Status |
+|---|---|---|
+| class-1 | How LLMs Work & What Prompt Engineering Is | Done |
+| class-2 | Model Configuration & Sampling Parameters | Done |
+| class-3 | Shot-Based Prompting — Zero, One & Few-Shot | Done |
+| class-4 | System Instructions — Rules That Shape the AI | Done |
+| class-5 | Delimiters & XML Tags — Structuring the Wall of Text | Done |
+| class-6 | Chain-of-Thought — Teaching Models to Reason Step by Step | Done |
+| class-7 | Self-Consistency — Sampling Many Paths, Voting on One Answer | Done |
+| class-8 | Plan-and-Solve — Planning Before Answering | Done |
+| class-9 | Chain of Draft — Reasoning in Shorthand | Done |
+| class-10 | System 2 Attention — Cleaning the Prompt Before Answering | Done |
+| class-11 | Prompt Chaining — One Prompt, One Task, One Objective | Done |
+| class-12 | Meta Prompting — The LLM as Its Own Project Manager | Done |
+| class-13 | Multimodal Prompting & Chain of Verification | Done |
+| class-14 | Retrieval Augmented Generation (RAG) & Query Optimization | Done |
+| class-15 | Image Generation Prompting — Think Like a Director | Done |
+| class-16 | Video Generation — Timestamp Prompting & Character Consistency | Done |
+| class-17 | Adversarial Prompting — Attacks, Jailbreaks & Defenses | Done |
+| class-18 | Prompt Management — The Prompt Lifecycle & Versioning | Done |
+| class-19 | The Planning Phase — Requirements & the Prompt Blueprint | Done |
+| class-20 | Prompt Development — Testing, Datasets & Versioning | Done |
+| class-21 | LLM as a Judge & the DeepEval Framework | Done |
+
+### LangChain Course
+
+| Class | Title | Status |
+|---|---|---|
+| class-1 | What Is LangChain & Why It Exists | Done |
+| class-2 | The Six Core Components of LangChain | Done |
+| class-3 | The Models Component — Language & Embedding Models in Code | Done |
+| class-4 | The Prompts Component — Templates, Messages & Chat History | Done |
+| class-5 | Structured Output — with_structured_output, TypedDict, Pydantic & JSON Schema | Done |
+| class-6 | Output Parsers — Str, JSON, Structured & Pydantic | Done |
+| class-7 | Chains — Sequential, Parallel & Conditional Pipelines | Done |
+| class-8 | Runnables — The Standardized Unit That Powers Every Chain | Done |
+| class-9 | Runnable Primitives & LCEL — Sequence, Parallel, Passthrough, Lambda & Branch | Done |
+| class-10 | Document Loaders — Loading Data for RAG (Text, PDF, Directory, Web & CSV) | Done |
+| class-11 | Text Splitters — Length, Text-Structure, Document-Structure & Semantic Chunking | Done |
+| class-12 | Vector Stores — Storing, Indexing & Searching Embeddings (with Chroma) | Done |
+| class-13 | Retrievers — Wikipedia, Vector Store, MMR, Multi-Query & Contextual Compression | Done |
+| class-14 | RAG — Why It Exists, Fine-Tuning vs In-Context Learning & the Four Steps | Done |
+| class-15 | Building a RAG App — YouTube Chat, End to End with LCEL Chains | Done |
+| class-16 | Tools — Built-in Tools, Custom Tools & Toolkits (Giving LLMs Hands & Legs) | Done |
+| class-17 | Tool Calling — Binding, Tool Calls, Execution & a Currency Converter | Done |
+| class-18 | AI Agents — The ReAct Pattern, Agent & AgentExecutor | Done |
+
+### n8n Course
+
+| Class | Title | Status |
+|---|---|---|
+| class-1 | Business Automation & AI Automation | Done |
+| class-2 | Workflows & Meet n8n | Done |
+| class-3 | Installing n8n — Cloud, Hostinger & Docker | Done |
+| class-4 | Your First Workflow — Triggers, Nodes & Credentials | Done |
+| class-5 | AI-Powered Workflows — LLM Chains, Merge & Aggregate | Done |
+| class-6 | Building an AI Agent — The Personal Assistant Project | Done |
+
+### RAG Course
+
+| Class | Title | Status |
+|---|---|---|
+| class-1 | Why Is RAG Important — The Four Problems in LLMs | Done |
+| class-2 | What Is RAG — Retrieval, Augmented, Generation | Done |
+| class-3 | How RAG Works — The End-to-End Data Flow | Done |
+
 ### Other Topics
 
 | Topic | Status |
