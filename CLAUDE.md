@@ -174,6 +174,9 @@ npm start
 | class-1 | Why Is RAG Important — The Four Problems in LLMs | Done |
 | class-2 | What Is RAG — Retrieval, Augmented, Generation | Done |
 | class-3 | How RAG Works — The End-to-End Data Flow | Done |
+| class-4 | What Are Document Loaders & How They Work? | Done |
+| class-5 | Text Loader, CSV Loader and PDF Loader | Done |
+| class-6 | JSON Loader, Web Loader, Recursive Web Loader | Done |
 
 ### Other Topics
 

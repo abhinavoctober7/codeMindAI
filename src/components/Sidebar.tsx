@@ -4,13 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   SiAnthropic, SiOllama, SiLangchain, SiN8N,
-  SiJavascript, SiPython, SiHtml5, SiCss,
-  SiTypescript, SiReact, SiNextdotjs, SiNodedotjs,
-  SiGit, SiMysql, SiDocker, SiRust, SiPhp, SiDart,
 } from "react-icons/si";
 import { TbNetwork, TbSparkles, TbDatabaseSearch } from "react-icons/tb";
 import { claudeCodeLessons, getLessonHref } from "@/data/claude-code-lessons";
-import { javascriptLessons, getJsLessonHref } from "@/data/javascript-lessons";
 import { mcpLessons, getMcpLessonHref } from "@/data/mcp-lessons";
 import { promptEngineeringLessons, getPromptEngineeringLessonHref } from "@/data/prompt-engineering-lessons";
 import { ollamaLessons, getOllamaLessonHref } from "@/data/ollama-lessons";
@@ -26,20 +22,6 @@ const topics = [
   { name: "LangChain",   slug: "langchain/class-1", icon: SiLangchain, color: "#22a06b" },
   { name: "n8n",         slug: "n8n/class-1", icon: SiN8N, color: "#ea4b71" },
   { name: "RAG",         slug: "rag/class-1", icon: TbDatabaseSearch, color: "#8b5cf6" },
-  { name: "JavaScript",  slug: "javascript",  icon: SiJavascript, color: "#f7df1e" },
-  { name: "Python",      slug: "python",      icon: SiPython,     color: "#3776ab" },
-  { name: "HTML",        slug: "html",        icon: SiHtml5,      color: "#e34c26" },
-  { name: "CSS",         slug: "css",         icon: SiCss,        color: "#264de4" },
-  { name: "TypeScript",  slug: "typescript",  icon: SiTypescript, color: "#3178c6" },
-  { name: "React",       slug: "react",       icon: SiReact,      color: "#61dafb" },
-  { name: "Next.js",     slug: "nextjs",      icon: SiNextdotjs,  color: "#000000" },
-  { name: "Node.js",     slug: "nodejs",      icon: SiNodedotjs,  color: "#68a063" },
-  { name: "Git",         slug: "git",         icon: SiGit,        color: "#f05032" },
-  { name: "SQL",         slug: "sql",         icon: SiMysql,      color: "#4479a1" },
-  { name: "Docker",      slug: "docker",      icon: SiDocker,     color: "#2496ed" },
-  { name: "Rust",        slug: "rust",        icon: SiRust,       color: "#ce422b" },
-  { name: "PHP",         slug: "php",         icon: SiPhp,        color: "#8892be" },
-  { name: "Dart",        slug: "dart",        icon: SiDart,       color: "#0175c2" },
 ];
 
 export default function Sidebar() {
@@ -51,7 +33,6 @@ export default function Sidebar() {
   const onLangChain = pathname.startsWith("/blog/langchain");
   const onN8n = pathname.startsWith("/blog/n8n");
   const onRag = pathname.startsWith("/blog/rag");
-  const onJavaScript = pathname.startsWith("/blog/javascript");
 
   return (
     <aside className="w-56 shrink-0 bg-[#1a2035] border-r border-white/10 flex flex-col overflow-y-auto">
@@ -73,7 +54,6 @@ export default function Sidebar() {
           const isLangChain = slug.startsWith("langchain");
           const isN8n = slug.startsWith("n8n");
           const isRag = slug.startsWith("rag");
-          const isJavaScript = slug === "javascript";
 
           return (
             <div key={slug}>
@@ -258,32 +238,6 @@ export default function Sidebar() {
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#8b5cf6] font-semibold bg-[#8b5cf6]/10"
-                            : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
-                        }`}
-                      >
-                        {lesson.label}
-                        <span className="block text-[10px] font-normal leading-tight truncate opacity-70">
-                          {lesson.title.replace(/^Class \d+:\s*/, "")}
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* Lesson sub-nav — JavaScript */}
-              {isJavaScript && onJavaScript && (
-                <div className="ml-3 mt-0.5 mb-1 flex flex-col gap-0.5 border-l border-white/10 pl-3">
-                  {javascriptLessons.map((lesson) => {
-                    const lessonHref = getJsLessonHref(lesson.slug);
-                    const isCurrentLesson = pathname === lessonHref || pathname.startsWith(lessonHref + "/");
-                    return (
-                      <Link
-                        key={lesson.slug}
-                        href={lessonHref}
-                        className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
-                          isCurrentLesson
-                            ? "text-[#f7df1e] font-semibold bg-[#f7df1e]/10"
                             : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
                         }`}
                       >
