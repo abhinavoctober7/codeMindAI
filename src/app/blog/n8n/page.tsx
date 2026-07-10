@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { SiN8N } from "react-icons/si";
 import { n8nLessons, getN8nLessonHref } from "@/data/n8n-lessons";
 
@@ -45,7 +45,7 @@ export default function N8nIndex() {
           {n8nLessons.map((lesson, i) => (
             <Link
               key={lesson.slug}
-              href={getN8nLessonHref(lesson.slug)}
+              to={getN8nLessonHref(lesson.slug)}
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-[#ea4b71]/30 transition-all group"
             >
               <span className="w-8 h-8 rounded-full bg-[#ea4b71]/10 text-[#ea4b71] text-sm flex items-center justify-center font-bold shrink-0">

@@ -29,6 +29,26 @@ export const ragLessons = [
     title: "Class 6: JSON Loader, Web Loader, Recursive Web Loader",
     label: "Class 6",
   },
+  {
+    slug: "class-7",
+    title: "Class 7: What are Text Splitters, Text & Length Based Splitters",
+    label: "Class 7",
+  },
+  {
+    slug: "class-8",
+    title: "Class 8: Advanced Text Splitter Techniques",
+    label: "Class 8",
+  },
+  {
+    slug: "class-9",
+    title: "Class 9: Vector Embeddings, Embedding Space and Distance Metrics",
+    label: "Class 9",
+  },
+  {
+    slug: "class-10",
+    title: "Class 10: Embedding Vectors Dimensionality & Proprietary vs Open Source Models",
+    label: "Class 10",
+  },
 ];
 
 export function getRagLessonHref(slug: string) {

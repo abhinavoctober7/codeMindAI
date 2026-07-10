@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { TbNetwork } from "react-icons/tb";
 import { mcpLessons, getMcpLessonHref } from "@/data/mcp-lessons";
 
@@ -42,7 +42,7 @@ export default function MCPIndex() {
           {mcpLessons.map((lesson, i) => (
             <Link
               key={lesson.slug}
-              href={getMcpLessonHref(lesson.slug)}
+              to={getMcpLessonHref(lesson.slug)}
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-[#6366f1]/30 transition-all group"
             >
               <span className="w-8 h-8 rounded-full bg-[#6366f1]/10 text-[#6366f1] text-sm flex items-center justify-center font-bold shrink-0">

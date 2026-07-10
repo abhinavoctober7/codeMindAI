@@ -1,9 +1,6 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, useLocation } from "react-router-dom";
 import {
-  SiAnthropic, SiOllama, SiLangchain, SiN8N,
+  SiAnthropic, SiOllama, SiLangchain, SiN8N, SiDocker,
 } from "react-icons/si";
 import { TbNetwork, TbSparkles, TbDatabaseSearch } from "react-icons/tb";
 import { claudeCodeLessons, getLessonHref } from "@/data/claude-code-lessons";
@@ -13,6 +10,7 @@ import { ollamaLessons, getOllamaLessonHref } from "@/data/ollama-lessons";
 import { langchainLessons, getLangChainLessonHref } from "@/data/langchain-lessons";
 import { n8nLessons, getN8nLessonHref } from "@/data/n8n-lessons";
 import { ragLessons, getRagLessonHref } from "@/data/rag-lessons";
+import { dockerLessons, getDockerLessonHref } from "@/data/docker-lessons";
 
 const topics = [
   { name: "Claude Code", slug: "claude-code/class-1", icon: SiAnthropic,  color: "#cc785c" },
@@ -22,10 +20,11 @@ const topics = [
   { name: "LangChain",   slug: "langchain/class-1", icon: SiLangchain, color: "#22a06b" },
   { name: "n8n",         slug: "n8n/class-1", icon: SiN8N, color: "#ea4b71" },
   { name: "RAG",         slug: "rag/class-1", icon: TbDatabaseSearch, color: "#8b5cf6" },
+  { name: "Docker",      slug: "docker/class-1", icon: SiDocker, color: "#2496ed" },
 ];
 
 export default function Sidebar() {
-  const pathname = usePathname();
+  const pathname = useLocation().pathname;
   const onClaudeCode = pathname.startsWith("/blog/claude-code");
   const onMCP = pathname.startsWith("/blog/mcp");
   const onPromptEngineering = pathname.startsWith("/blog/prompt-engineering");
@@ -33,6 +32,7 @@ export default function Sidebar() {
   const onLangChain = pathname.startsWith("/blog/langchain");
   const onN8n = pathname.startsWith("/blog/n8n");
   const onRag = pathname.startsWith("/blog/rag");
+  const onDocker = pathname.startsWith("/blog/docker");
 
   return (
     <aside className="w-56 shrink-0 bg-[#1a2035] border-r border-white/10 flex flex-col overflow-y-auto">
@@ -54,11 +54,12 @@ export default function Sidebar() {
           const isLangChain = slug.startsWith("langchain");
           const isN8n = slug.startsWith("n8n");
           const isRag = slug.startsWith("rag");
+          const isDocker = slug.startsWith("docker");
 
           return (
             <div key={slug}>
               <Link
-                href={href}
+                to={href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-white/10 text-white font-semibold"
@@ -78,7 +79,7 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#cc785c] font-semibold bg-[#cc785c]/10"
@@ -104,7 +105,7 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#6366f1] font-semibold bg-[#6366f1]/10"
@@ -130,7 +131,7 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#ec4899] font-semibold bg-[#ec4899]/10"
@@ -156,7 +157,7 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#14b8a6] font-semibold bg-[#14b8a6]/10"
@@ -182,7 +183,7 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#22a06b] font-semibold bg-[#22a06b]/10"
@@ -208,7 +209,7 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#ea4b71] font-semibold bg-[#ea4b71]/10"
@@ -234,10 +235,36 @@ export default function Sidebar() {
                     return (
                       <Link
                         key={lesson.slug}
-                        href={lessonHref}
+                        to={lessonHref}
                         className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
                           isCurrentLesson
                             ? "text-[#8b5cf6] font-semibold bg-[#8b5cf6]/10"
+                            : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
+                        }`}
+                      >
+                        {lesson.label}
+                        <span className="block text-[10px] font-normal leading-tight truncate opacity-70">
+                          {lesson.title.replace(/^Class \d+:\s*/, "")}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Lesson sub-nav — Docker */}
+              {isDocker && onDocker && (
+                <div className="ml-3 mt-0.5 mb-1 flex flex-col gap-0.5 border-l border-white/10 pl-3">
+                  {dockerLessons.map((lesson) => {
+                    const lessonHref = getDockerLessonHref(lesson.slug);
+                    const isCurrentLesson = pathname === lessonHref || pathname.startsWith(lessonHref + "/");
+                    return (
+                      <Link
+                        key={lesson.slug}
+                        to={lessonHref}
+                        className={`text-xs py-1.5 px-2 rounded-md transition-colors truncate ${
+                          isCurrentLesson
+                            ? "text-[#2496ed] font-semibold bg-[#2496ed]/10"
                             : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
                         }`}
                       >

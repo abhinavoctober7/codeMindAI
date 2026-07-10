@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { TbDatabaseSearch } from "react-icons/tb";
 import { ragLessons, getRagLessonHref } from "@/data/rag-lessons";
 
@@ -46,7 +46,7 @@ export default function RagIndex() {
           {ragLessons.map((lesson, i) => (
             <Link
               key={lesson.slug}
-              href={getRagLessonHref(lesson.slug)}
+              to={getRagLessonHref(lesson.slug)}
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-[#8b5cf6]/30 transition-all group"
             >
               <span className="w-8 h-8 rounded-full bg-[#8b5cf6]/10 text-[#8b5cf6] text-sm flex items-center justify-center font-bold shrink-0">

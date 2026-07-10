@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { ragLessons, getRagLessonHref } from "@/data/rag-lessons";
 
 interface Props {
@@ -22,7 +22,7 @@ export default function RagLessonLayout({ slug, children }: Props) {
       <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-2">
         {prev ? (
           <Link
-            href={getRagLessonHref(prev.slug)}
+            to={getRagLessonHref(prev.slug)}
             className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group"
           >
             <span className="group-hover:-translate-x-0.5 transition-transform">←</span>
@@ -34,7 +34,7 @@ export default function RagLessonLayout({ slug, children }: Props) {
 
         {next ? (
           <Link
-            href={getRagLessonHref(next.slug)}
+            to={getRagLessonHref(next.slug)}
             className="flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/20 px-5 py-2 rounded-lg transition-colors group"
           >
             <span>{next.title}</span>

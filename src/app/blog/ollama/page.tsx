@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { SiOllama } from "react-icons/si";
 import { ollamaLessons, getOllamaLessonHref } from "@/data/ollama-lessons";
 
@@ -45,7 +45,7 @@ export default function OllamaIndex() {
           {ollamaLessons.map((lesson, i) => (
             <Link
               key={lesson.slug}
-              href={getOllamaLessonHref(lesson.slug)}
+              to={getOllamaLessonHref(lesson.slug)}
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-[#14b8a6]/30 transition-all group"
             >
               <span className="w-8 h-8 rounded-full bg-[#14b8a6]/10 text-[#14b8a6] text-sm flex items-center justify-center font-bold shrink-0">

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { SiLangchain } from "react-icons/si";
 import { langchainLessons, getLangChainLessonHref } from "@/data/langchain-lessons";
 
@@ -45,7 +45,7 @@ export default function LangChainIndex() {
           {langchainLessons.map((lesson, i) => (
             <Link
               key={lesson.slug}
-              href={getLangChainLessonHref(lesson.slug)}
+              to={getLangChainLessonHref(lesson.slug)}
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-[#22a06b]/30 transition-all group"
             >
               <span className="w-8 h-8 rounded-full bg-[#22a06b]/10 text-[#22a06b] text-sm flex items-center justify-center font-bold shrink-0">

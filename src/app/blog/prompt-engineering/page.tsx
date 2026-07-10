@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { TbSparkles } from "react-icons/tb";
 import { promptEngineeringLessons, getPromptEngineeringLessonHref } from "@/data/prompt-engineering-lessons";
 
@@ -44,7 +44,7 @@ export default function PromptEngineeringIndex() {
           {promptEngineeringLessons.map((lesson, i) => (
             <Link
               key={lesson.slug}
-              href={getPromptEngineeringLessonHref(lesson.slug)}
+              to={getPromptEngineeringLessonHref(lesson.slug)}
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-[#ec4899]/30 transition-all group"
             >
               <span className="w-8 h-8 rounded-full bg-[#ec4899]/10 text-[#ec4899] text-sm flex items-center justify-center font-bold shrink-0">

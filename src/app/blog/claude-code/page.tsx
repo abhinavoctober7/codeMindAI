@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { Navigate } from "react-router-dom";
 
 export default function ClaudeCodeRoot() {
-  redirect("/blog/claude-code/class-1");
+  return <Navigate to="/blog/claude-code/class-1" replace />;
 }

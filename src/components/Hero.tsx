@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -7,13 +6,12 @@ export default function Hero() {
 
       {/* Left: image */}
       <div className="w-80 md:w-[580px] shrink-0">
-        <Image
+        <img
           src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=85"
           alt="Laptop on bright clean desk"
           width={1200}
           height={800}
           className="w-full h-auto rounded-2xl object-cover drop-shadow-2xl border-8 border-white"
-          priority
         />
       </div>
 
@@ -25,7 +23,7 @@ export default function Hero() {
         </h1>
         <div className="flex flex-col gap-3 w-full">
           <Link
-            href="/blog"
+            to="/blog"
             className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded transition-colors text-center uppercase tracking-wide"
           >
             Get Started

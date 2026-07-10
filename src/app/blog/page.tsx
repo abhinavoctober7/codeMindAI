@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { SiAnthropic } from "react-icons/si";
 
 export default function BlogPage() {
@@ -14,7 +14,7 @@ export default function BlogPage() {
         </p>
       </div>
       <Link
-        href="/blog/claude-code/class-1"
+        to="/blog/claude-code/class-1"
         className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-lg transition-colors"
       >
         Start with Claude Code →

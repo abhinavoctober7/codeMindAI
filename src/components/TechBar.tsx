@@ -1,5 +1,3 @@
-"use client";
-
 import {
   SiJavascript, SiCss, SiHtml5, SiReact, SiTypescript,
   SiPython, SiNodedotjs, SiNextdotjs, SiGit, SiMysql,

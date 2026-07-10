@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const footerLinks = [
   { label: "Blog", href: "/blog" },
@@ -18,7 +18,7 @@ export default function Footer() {
           {footerLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="text-xs text-[#737373] hover:text-[#a8a8a8] transition-colors"
             >
               {link.label}

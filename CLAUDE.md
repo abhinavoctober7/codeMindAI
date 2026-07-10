@@ -2,23 +2,27 @@
 
 ## 1. Project Overview
 
-This is **codeMindAI** — a Next.js 16 learning resource hub for AI and Web Development topics. It presents structured course content (classes) for subjects like Claude Code, JavaScript, Python, etc., with a sidebar-driven navigation and per-lesson pages.
+This is **codeMindAI** — a React (Vite) single-page learning resource hub for AI and Web Development topics. It presents structured course content (classes) for subjects like Claude Code, JavaScript, Python, etc., with a sidebar-driven navigation and per-lesson pages. Routing is client-side via React Router.
 
 ---
 
 ## 2. Architecture
 
-``` 
+```
+index.html                        # HTML entry (loads Inter font, mounts #root)
+vite.config.ts                    # Vite + React + Tailwind plugins, "@" alias
 src/
+├── main.tsx                      # Entry: createRoot + <BrowserRouter><App/>
+├── App.tsx                       # Router — auto-maps src/app/**/page.tsx to routes
+├── vite-env.d.ts
 ├── app/
-│   ├── page.tsx                  # Landing page
-│   ├── layout.tsx                # Root layout (fonts, globals)
-│   ├── globals.css               # Global styles
+│   ├── page.tsx                  # Landing page (route "/")
+│   ├── globals.css               # Global styles (Tailwind + --font-inter)
 │   └── blog/
-│       ├── layout.tsx            # Blog layout: Navbar + Sidebar + main
+│       ├── layout.tsx            # BlogLayout: Navbar + Sidebar + <Outlet/>
 │       ├── page.tsx              # Blog index
 │       └── claude-code/
-│           ├── page.tsx          # Claude Code course index
+│           ├── page.tsx          # Course index (<Navigate> redirect to class-1)
 │           └── class-N/
 │               └── page.tsx      # Individual lesson pages
 ├── components/
@@ -32,12 +36,18 @@ src/
     └── claude-code-lessons.ts    # Lesson metadata (slug, title, label)
 ```
 
+**Routing:** `src/App.tsx` uses `import.meta.glob("./app/**/page.tsx")` to auto-map every
+`page.tsx` to a route mirroring its path (`src/app/blog/rag/class-1/page.tsx` → `/blog/rag/class-1`).
+Everything under `/blog` renders inside `BlogLayout`; `/` renders standalone. Adding a lesson
+page is all that's needed — no manual route wiring.
+
 ---
 
 ## 3. Code Style
 
 - TypeScript everywhere — no `any`, no plain `.js` files in `src/`
 - Functional components only — no class components
+- Client-side routing only — use React Router (`Link` with `to`, `useLocation`, `<Navigate>`). No Next.js APIs (`next/link`, `next/image`, `next/font`, `next/navigation`, `metadata`, `"use client"`)
 - Tailwind v4 for all styling — no inline styles, no CSS modules
 - Brand colour is `#cc785c` — use it for accents, active states, highlights
 - Dark theme throughout — background `#1e2235`, sidebar `#1a2035`, code blocks `#0d1117`
@@ -50,9 +60,10 @@ src/
 
 | Library | Purpose |
 |---|---|
-| Next.js 16 | Framework (App Router) |
+| Vite 7 | Build tool / dev server |
 | React 19 | UI |
-| Tailwind v4 | Styling |
+| React Router v7 (`react-router-dom`) | Client-side routing |
+| Tailwind v4 (`@tailwindcss/vite`) | Styling |
 | react-icons | Icons (use `SiX` from `react-icons/si`) |
 | TypeScript 5 | Type safety |
 
@@ -66,24 +77,23 @@ src/
 # Install dependencies
 npm install
 
-# Start dev server
+# Start dev server (Vite)
 npm run dev
 
 # Type check
 npx tsc --noEmit
 
-# Build for production
+# Build for production (tsc --noEmit + vite build → dist/)
 npm run build
 
-# Start production server
-npm start
+# Preview the production build
+npm run preview
 ```
 
 ---
 
 ## 6. Critical Rules
 
-- **Never touch `src/app/blog/claude-code/.next/`** — these are build artifacts accidentally committed; ignore them.
 - **Do not change the brand colour `#cc785c`** unless explicitly asked.
 - **Sidebar sub-nav is automatic** — adding a new lesson to `claude-code-lessons.ts` is all that's needed; the sidebar picks it up automatically.
 - **LessonLayout handles prev/next** — do not add manual navigation links inside lesson pages.
@@ -177,6 +187,25 @@ npm start
 | class-4 | What Are Document Loaders & How They Work? | Done |
 | class-5 | Text Loader, CSV Loader and PDF Loader | Done |
 | class-6 | JSON Loader, Web Loader, Recursive Web Loader | Done |
+| class-7 | What are Text Splitters, Text & Length Based Splitters | Done |
+| class-8 | Advanced Text Splitter Techniques | Done |
+| class-9 | Vector Embeddings, Embedding Space and Distance Metrics | Done |
+| class-10 | Embedding Vectors Dimensionality & Proprietary vs Open Source Embedding Models | Done |
+
+### Docker Course
+
+| Class | Title | Status |
+|---|---|---|
+| class-1 | Introduction to Docker — Engine, Images, Containers & Registries | Done |
+| class-2 | Docker in Practice — Setup, Building Images, Port Mapping & Docker Hub | Done |
+| class-3 | Environment Variables in Docker — ENV, ARG & --env-file | Done |
+| class-4 | Caching & Multi-Stage Builds — Smaller, Faster Images | Done |
+| class-5 | Volumes in Docker — Concepts & Why Data Needs Persisting | Done |
+| class-6 | Volumes in Docker — Implementation (Bind Mounts & Named Volumes) | Done |
+| class-7 | Docker Compose — Running Multi-Container Apps | Done |
+| class-8 | Deploying to AWS — Part 1 (ECR & Pushing Your Image) | Done |
+| class-9 | Deploying to AWS — Part 2 (Running on EC2) | Done |
+| class-10 | Debugging in Docker — Logs, Exec, Inspect & Common Fixes | Done |
 
 ### Other Topics
 
